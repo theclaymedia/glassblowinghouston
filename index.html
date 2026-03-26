@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glassblowing Houston | Be Blown Away at the Hottest Place in Town!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --flame: #E8562A;
+    --flame-light: #F4845F;
+    --flame-glow: #FF9E44;
+    --ember: #C73E1D;
+    --molten: #FFB627;
+    --deep: #0D0D0D;
+    --night: #141414;
+    --charcoal: #1C1C1C;
+    --smoke: #2A2A2A;
+    --ash: #3D3D3D;
+    --warm-white: #FAF7F2;
+    --cream: #F0EBE3;
+    --sand: #E0D8CC;
+    --text-primary: #FAF7F2;
+    --text-muted: rgba(250,247,242,0.6);
+    --text-dark: #1C1C1C;
+    --text-dark-muted: #6B6560;
+    --serif: 'Poppins', system-ui, sans-serif;
+    --sans: 'Poppins', system-ui, sans-serif;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --shadow-glow: 0 0 60px rgba(232,86,42,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--deep);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ─── BLOB SHAPES ─── */
+  .blob-1 { border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%; }
+  .blob-2 { border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%; }
+  .blob-3 { border-radius: 50% 50% 40% 60% / 40% 55% 45% 60%; }
+  .blob-4 { border-radius: 45% 55% 60% 40% / 60% 45% 55% 40%; }
+  .circle { border-radius: 50%; }
+
+  /* ─── ANNOUNCEMENT BAR ─── */
+  .announce-bar {
+    background: linear-gradient(90deg, var(--flame) 0%, var(--flame-glow) 50%, var(--flame) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 4s ease-in-out infinite;
+    color: var(--deep);
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 24px;
+  }
+  .logo-link img {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s var(--ease-out);
+  }
+  .logo-link:hover img { transform: scale(1.03); }
+
+  .nav { display: flex; align-items: center; gap: 4px; }
+  .nav a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.25s;
+    color: rgba(250,247,242,0.65);
+    white-space: nowrap;
+  }
+  .nav a:hover { color: var(--warm-white); background: rgba(255,255,255,0.06); }
+  .nav a.cta-btn {
+    background: var(--flame);
+    color: var(--warm-white);
+    font-weight: 600;
+    margin-left: 8px;
+    border-radius: 100px;
+    padding: 10px 22px;
+  }
+  .nav a.cta-btn:hover { background: var(--ember); }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 8px; z-index: 200;
+  }
+  .hamburger span { width: 24px; height: 2px; background: var(--warm-white); border-radius: 2px; transition: 0.3s; }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-video-fallback {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(ellipse at center 60%, rgba(13,13,13,0.45) 0%, rgba(13,13,13,0.75) 60%, rgba(13,13,13,0.85) 100%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to top, var(--deep) 0%, transparent 30%);
+  }
+  .hero .container {
+    position: relative;
+    z-index: 2;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-content { max-width: 800px; text-align: center; }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--flame-glow);
+    margin-bottom: 20px;
+  }
+  .hero-tag::before { display: none; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(3.2rem, 7vw, 5.2rem);
+    font-weight: 900;
+    line-height: 1.08;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--flame-glow), var(--flame-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin-bottom: 36px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 300;
+  }
+  .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    transition: all 0.35s var(--ease-out);
+    cursor: pointer;
+    border: none;
+    font-family: var(--sans);
+  }
+  .btn-flame {
+    background: linear-gradient(135deg, var(--flame), var(--ember));
+    color: var(--warm-white);
+    box-shadow: 0 4px 24px rgba(232,86,42,0.3);
+  }
+  .btn-flame:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(232,86,42,0.45); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--warm-white);
+    border: 1.5px solid rgba(250,247,242,0.25);
+  }
+  .btn-ghost:hover { border-color: var(--flame-light); color: var(--flame-light); }
+
+  /* ─── SERVICES SECTION ─── */
+  .services-section {
+    padding: 100px 0;
+    background: var(--deep);
+    position: relative;
+  }
+  .services-section::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,86,42,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .section-header .overline {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--flame);
+    margin-bottom: 12px;
+  }
+  .section-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .section-header p {
+    margin-top: 14px;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.95rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .service-card {
+    background: var(--night);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s var(--ease-out);
+    position: relative;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(232,86,42,0.2);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 40px rgba(232,86,42,0.06);
+  }
+  .service-card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+  }
+  .service-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+  }
+  .service-card:hover .service-card-img img { transform: scale(1.06); }
+  .service-card-body {
+    padding: 28px;
+  }
+  .service-card-body h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .service-card-body p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 18px;
+  }
+  .card-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--flame-light);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.3s, color 0.3s;
+  }
+  .card-link:hover { gap: 10px; color: var(--flame-glow); }
+  .card-link::after { content: '→'; }
+
+  /* ─── ABOUT SECTION (BLOBS) ─── */
+  .about-section {
+    padding: 100px 0;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-section::before {
+    content: '';
+    position: absolute;
+    bottom: -120px;
+    left: -120px;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,86,42,0.06) 0%, transparent 70%);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .about-blobs {
+    position: relative;
+    height: 480px;
+  }
+  .about-blob {
+    position: absolute;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+    transition: transform 0.5s var(--ease-out);
+  }
+  .about-blob:hover { transform: scale(1.04); }
+  .about-blob img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .about-blob-1 {
+    width: 300px;
+    height: 300px;
+    top: 0;
+    left: 20px;
+    border-radius: 62% 38% 50% 50% / 50% 62% 38% 50%;
+  }
+  .about-blob-2 {
+    width: 220px;
+    height: 220px;
+    bottom: 20px;
+    right: 0;
+    border-radius: 42% 58% 55% 45% / 55% 42% 58% 45%;
+  }
+  .about-blob-3 {
+    width: 160px;
+    height: 160px;
+    top: 40px;
+    right: 40px;
+    border-radius: 50%;
+    border: 3px solid var(--flame);
+    box-shadow: var(--shadow-glow);
+  }
+  .about-content .overline {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--flame);
+    margin-bottom: 12px;
+  }
+  .about-content h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--text-dark);
+  }
+  .about-content p {
+    color: var(--text-dark-muted);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .about-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--sand);
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--flame);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-dark-muted);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+  .btn-dark-solid {
+    background: var(--charcoal);
+    color: var(--warm-white);
+    margin-top: 24px;
+  }
+  .btn-dark-solid:hover { background: var(--deep); transform: translateY(-2px); }
+
+  /* ─── EXPERIENCES (CIRCLE GRID) ─── */
+  .experiences-section {
+    padding: 100px 0;
+    background: var(--deep);
+    position: relative;
+  }
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+  }
+  .exp-card {
+    text-align: center;
+    transition: transform 0.4s var(--ease-out);
+  }
+  .exp-card:hover { transform: translateY(-6px); }
+  .exp-card-img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 3px solid rgba(255,255,255,0.05);
+    transition: border-color 0.4s;
+    position: relative;
+  }
+  .exp-card:hover .exp-card-img { border-color: var(--flame); box-shadow: 0 0 40px rgba(232,86,42,0.15); }
+  .exp-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-out);
+  }
+  .exp-card:hover .exp-card-img img { transform: scale(1.08); }
+  .exp-card h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .exp-card .price {
+    font-size: 0.88rem;
+    color: var(--flame-glow);
+    font-weight: 600;
+  }
+
+  /* ─── GALLERY MOSAIC ─── */
+  .gallery-section {
+    padding: 100px 0;
+    background: var(--night);
+    position: relative;
+    overflow: hidden;
+  }
+  .gallery-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+  .gallery-item {
+    overflow: hidden;
+    transition: transform 0.4s var(--ease-out);
+  }
+  .gallery-item:hover { transform: scale(1.02); }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+  }
+  .gallery-item:hover img { transform: scale(1.08); }
+  .gallery-item:nth-child(1) {
+    grid-column: 1 / 3;
+    aspect-ratio: 2/1.2;
+    border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+  }
+  .gallery-item:nth-child(2) {
+    border-radius: 50%;
+    aspect-ratio: 1;
+  }
+  .gallery-item:nth-child(3) {
+    border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%;
+    aspect-ratio: 1;
+  }
+  .gallery-item:nth-child(4) {
+    border-radius: 50%;
+    aspect-ratio: 1;
+  }
+  .gallery-item:nth-child(5) {
+    border-radius: 45% 55% 60% 40% / 60% 45% 55% 40%;
+    aspect-ratio: 1;
+  }
+  .gallery-item:nth-child(6) {
+    grid-column: 3 / 5;
+    aspect-ratio: 2/1.2;
+    border-radius: 50% 50% 40% 60% / 40% 55% 45% 60%;
+  }
+
+  /* ─── VALUES SECTION ─── */
+  .values-section {
+    padding: 100px 0;
+    background: var(--deep);
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .value-card {
+    text-align: center;
+    padding: 40px 28px;
+    border-radius: 24px;
+    background: var(--night);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.35s var(--ease-out);
+  }
+  .value-card:hover {
+    border-color: rgba(232,86,42,0.15);
+    transform: translateY(-4px);
+  }
+  .value-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(232,86,42,0.15), rgba(255,182,39,0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.4rem;
+  }
+  .value-card h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .value-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-section {
+    padding: 100px 0;
+    background: var(--warm-white);
+    color: var(--text-dark);
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .faq-image-wrap {
+    position: relative;
+  }
+  .faq-blob {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 55% 45% 60% 40% / 45% 60% 40% 55%;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.15);
+  }
+  .faq-blob img { width: 100%; height: 100%; object-fit: cover; }
+  .faq-list { display: flex; flex-direction: column; gap: 0; }
+  .faq-item {
+    border-bottom: 1px solid var(--sand);
+    padding: 20px 0;
+    cursor: pointer;
+  }
+  .faq-item:first-child { border-top: 1px solid var(--sand); }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+  }
+  .faq-q::after {
+    content: '+';
+    font-size: 1.3rem;
+    color: var(--flame);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .faq-item.open .faq-q::after { content: '−'; }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s var(--ease-out), padding 0.3s;
+    font-size: 0.88rem;
+    color: var(--text-dark-muted);
+    line-height: 1.7;
+  }
+  .faq-item.open .faq-a {
+    max-height: 300px;
+    padding-top: 12px;
+  }
+
+  /* ─── CTA SECTION ─── */
+  .cta-section {
+    padding: 100px 0;
+    background: var(--charcoal);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,86,42,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-section h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .cta-section p {
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto 32px;
+    font-size: 1rem;
+    position: relative;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--deep);
+    padding: 60px 0 28px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer-brand img { height: 44px; margin-bottom: 16px; }
+  .footer-brand p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; max-width: 280px; }
+  .footer h4 {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--flame);
+    margin-bottom: 16px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 0.85rem; color: var(--text-muted); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--warm-white); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .footer-social { display: flex; gap: 16px; }
+  .footer-social a {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700;
+    transition: all 0.3s;
+    color: var(--text-muted);
+  }
+  .footer-social a:hover { background: var(--flame); color: var(--warm-white); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeInUp 0.8s var(--ease-out) forwards; opacity: 0; }
+  .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.2s; }
+  .d3 { animation-delay: 0.3s; } .d4 { animation-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-blobs { height: 360px; max-width: 500px; margin: 0 auto; }
+    .exp-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-mosaic { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:nth-child(1) { grid-column: 1 / 2; aspect-ratio: 1; border-radius: 50%; }
+    .gallery-item:nth-child(6) { grid-column: 1 / 2; aspect-ratio: 1; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .faq-image-wrap { max-width: 360px; margin: 0 auto; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav { display: none; }
+    .hamburger { display: flex; }
+    .nav.open {
+      display: flex; flex-direction: column;
+      position: fixed; inset: 0; background: var(--deep);
+      z-index: 150; justify-content: center; align-items: center; gap: 8px;
+    }
+    .nav.open a { font-size: 1.1rem; padding: 14px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .exp-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .values-grid { grid-template-columns: 1fr; }
+    .gallery-mosaic { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .about-blobs { height: 300px; }
+    .about-blob-1 { width: 220px; height: 220px; }
+    .about-blob-2 { width: 170px; height: 170px; }
+    .about-blob-3 { width: 120px; height: 120px; }
+  }
+  @media (max-width: 480px) {
+    .exp-grid { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ ANNOUNCEMENT BAR ═══ -->
+<div class="announce-bar">
+  Next 1st Sunday Free Demo is April 5th 3–5 PM &nbsp;·&nbsp; Events (5+ people) available 7 days/week
+</div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+  <div class="container">
+    <a href="https://glassblowinghouston.com" class="logo-link">
+      <img src="gbh-logo.png" alt="Glassblowing Houston">
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="https://glassblowinghouston.com/book-experiences/">Experiences</a>
+      <a href="https://glassblowinghouston.com/book-events/">Events</a>
+      <a href="https://glassblowinghouston.com/book-classes/">Classes</a>
+      <a href="https://glassblowinghouston.com/book-rental-time/">Rentals</a>
+      <a href="https://glassblowinghouston.com/our-story/">Our Story</a>
+      <a href="https://shop.glassblowinghouston.com/shop-glass-art/">Shop</a>
+      <a href="https://glassblowinghouston.com/book-services/" class="cta-btn">Book Now</a>
+    </nav>
+    <div class="hamburger" onclick="document.getElementById('mainNav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ HERO (VIDEO) ═══ -->
+<section class="hero">
+  <div class="hero-video">
+    <video autoplay muted loop playsinline poster="https://glassblowinghouston.com/wp-content/uploads/2014/09/Gather1200x630.webp">
+      <!-- Place your video file named hero-video.mp4 in the same folder as this HTML -->
+      <source src="hero-video.mp4" type="video/mp4">
+    </video>
+    <!-- Fallback image if video doesn't load -->
+    <img class="hero-video-fallback" src="https://glassblowinghouston.com/wp-content/uploads/2014/09/Gather1200x630.webp" alt="" 
+         onload="if(!this.previousElementSibling.previousElementSibling.canPlayType('video/mp4')){this.style.display='block'}">
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag fade-up">Houston's Only Open-Access Studio</div>
+      <h1 class="fade-up d1">Be Blown Away at<br>the <em>Hottest Place</em><br>in Town</h1>
+      <p class="hero-desc fade-up d2">Experience the magic of molten glass. From first-time experiences to advanced classes, we bring the art of glassblowing to life for everyone.</p>
+      <div class="hero-buttons fade-up d3">
+        <a href="https://glassblowinghouston.com/book-experiences/" class="btn btn-flame">Book an Experience</a>
+        <a href="https://glassblowinghouston.com/book-events/" class="btn btn-ghost">Host an Event</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">What We Do</div>
+      <h2>Ignite Your Creativity</h2>
+      <p>From hands-on experiences to private events and custom designs, there's a way for everyone to discover the art of glass.</p>
+    </div>
+    <div class="services-grid">
+
+      <a href="https://glassblowinghouston.com/book-experiences/" class="service-card">
+        <div class="service-card-img">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2022/08/MakeaSomething-scaled.jpg" alt="Glassblowing Experiences">
+        </div>
+        <div class="service-card-body">
+          <h3>Experiences</h3>
+          <p>Experience the magic of glass firsthand. No experience needed — all ages welcome.</p>
+          <span class="card-link">Book Now</span>
+        </div>
+      </a>
+
+      <a href="https://glassblowinghouston.com/book-events/" class="service-card">
+        <div class="service-card-img">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2022/08/AboutWhyBartsch-scaled.webp" alt="Events">
+        </div>
+        <div class="service-card-body">
+          <h3>Host Events</h3>
+          <p>Team-building, client appreciation, and private parties that create lasting memories.</p>
+          <span class="card-link">Learn More</span>
+        </div>
+      </a>
+
+      <a href="https://glassblowinghouston.com/book-classes/" class="service-card">
+        <div class="service-card-img">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2022/07/Blowing-Bigger-Experience1.webp" alt="Classes">
+        </div>
+        <div class="service-card-body">
+          <h3>Learn-to Classes</h3>
+          <p>A progressive series of glass classes in glassblowing and kiln-forming for every level.</p>
+          <span class="card-link">Book Classes</span>
+        </div>
+      </a>
+
+      <a href="https://glassblowinghouston.com/book-custom-designs/" class="service-card">
+        <div class="service-card-img">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2022/07/Grand-Glassblowing-Experience1.webp" alt="Custom Designs">
+        </div>
+        <div class="service-card-body">
+          <h3>Custom Designs</h3>
+          <p>We can help make your creative vision a reality in glass. Dream it, we'll craft it.</p>
+          <span class="card-link">Start Designing</span>
+        </div>
+      </a>
+
+      <a href="https://glassblowinghouston.com/book-rental-time/" class="service-card">
+        <div class="service-card-img">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2014/09/Gather1200x630.webp" alt="Studio Rentals">
+        </div>
+        <div class="service-card-body">
+          <h3>Rent Studio Time</h3>
+          <p>For experienced makers — glory hole, small kiln, and cold shop rentals available.</p>
+          <span class="card-link">Book Rental</span>
+        </div>
+      </a>
+
+      <a href="https://glassblowinghouston.com/book-venue/" class="service-card">
+        <div class="service-card-img">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2022/08/Remembrance.webp" alt="Venue">
+        </div>
+        <div class="service-card-body">
+          <h3>Book Our Venue</h3>
+          <p>Host an intimate event inside or outside — we have several special spaces for you.</p>
+          <span class="card-link">Learn More</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT (BLOB IMAGES) ═══ -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-blobs">
+        <div class="about-blob about-blob-1">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2014/09/Gather1200x630.webp" alt="Glassblowing gather">
+        </div>
+        <div class="about-blob about-blob-2">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2022/08/AboutWhyBartsch-scaled.webp" alt="Bartsch family">
+        </div>
+        <div class="about-blob about-blob-3">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2025/06/PKBThreeDimensionalVisions2.9.19-24-scaled.webp" alt="Patrick">
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="overline">Our Story</div>
+        <h2>The Heart of Glassblowing in Greater Houston</h2>
+        <p>Glassblowing Houston is the only open-access glassblowing studio in the greater Houston area. We exist as a creative center to share the knowledge and enthusiasm of glass and serve the public.</p>
+        <p>We are a family-operated small business. Each of us is developing our voice, leading us down different avenues of creativity. We believe that the future requires continuously innovating and evolving to supply the public with enriching learning and artistic opportunities.</p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-num">20+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Happy Customers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Days Open</div>
+          </div>
+        </div>
+        <a href="https://glassblowinghouston.com/our-story/" class="btn btn-dark-solid">Read Our Full Story →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCES (CIRCLES) ═══ -->
+<section class="experiences-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">Experiences</div>
+      <h2>Design Glass With Us</h2>
+      <p>Thoughtfully designed for every skill level — from first-timers to seasoned makers.</p>
+    </div>
+    <div class="exp-grid">
+
+      <a href="https://glassblowinghouston.com/make-a-something-experience/" class="exp-card">
+        <div class="exp-card-img">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2022/08/MakeaSomething-scaled.jpg" alt="Make a Something">
+        </div>
+        <h3>Make a Something</h3>
+        <div class="price">From $220</div>
+      </a>
+
+      <a href="https://glassblowinghouston.com/blowing-bigger-glassblowing-experience/" class="exp-card">
+        <div class="exp-card-img">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2022/07/Blowing-Bigger-Experience1.webp" alt="Blowing Bigger">
+        </div>
+        <h3>Blowing Bigger</h3>
+        <div class="price">From $325</div>
+      </a>
+
+      <a href="https://glassblowinghouston.com/the-grand-glassblowing-experience/" class="exp-card">
+        <div class="exp-card-img">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2022/07/Grand-Glassblowing-Experience1.webp" alt="The Grand Experience">
+        </div>
+        <h3>The Grand Experience</h3>
+        <div class="price">From $820</div>
+      </a>
+
+      <a href="https://glassblowinghouston.com/ultimate-glassblowing-adventure/" class="exp-card">
+        <div class="exp-card-img">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2022/08/Ultimate-Glassblowing-Adventure.webp" alt="Ultimate Adventure">
+        </div>
+        <h3>Ultimate Adventure</h3>
+        <div class="price">From $1,650</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY MOSAIC (BLOB SHAPES) ═══ -->
+<section class="gallery-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">Gallery</div>
+      <h2>Brighten Your Space with Glass Art</h2>
+    </div>
+    <div class="gallery-mosaic">
+      <div class="gallery-item">
+        <img src="https://glassblowinghouston.com/wp-content/uploads/2024/07/IMG_2483-scaled-e1721751922808.webp" alt="Glass Art Gallery">
+      </div>
+      <div class="gallery-item">
+        <img src="image assets/Tear Drop in Blue.png" alt="Tear Drop in Blue Glass">
+      </div>
+      <div class="gallery-item">
+        <img src="image assets/Wig Wag.png" alt="Wig Wag Glass">
+      </div>
+      <div class="gallery-item">
+        <img src="image assets/Amber Tear.png" alt="Amber Tear Glass">
+      </div>
+      <div class="gallery-item">
+        <img src="image assets/Peacock.png" alt="Peacock Glass">
+      </div>
+      <div class="gallery-item">
+        <img src="https://glassblowinghouston.com/wp-content/uploads/2022/08/MakeaSomething-scaled.jpg" alt="Make a Something">
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://shop.glassblowinghouston.com/shop-glass-art/" class="btn btn-flame">Shop Glass Art →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VALUES ═══ -->
+<section class="values-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">Our Values</div>
+      <h2>Blowing, Shaping, Sculpting the Final Form</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🔥</div>
+        <h3>Vision</h3>
+        <p>Enriching lives through artistic self-expression. We believe everyone has a creative spark waiting to ignite.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">✦</div>
+        <h3>Mission</h3>
+        <p>Provide excellence in customer service so the only focus is the Art. Your experience matters most.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">♻</div>
+        <h3>Innovation</h3>
+        <p>Continuously evolving to supply the public with enriching learning and artistic opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-image-wrap">
+        <div class="faq-blob">
+          <img src="https://glassblowinghouston.com/wp-content/uploads/2025/06/PKBThreeDimensionalVisions2.9.19-24-scaled.webp" alt="Glass artist at work">
+        </div>
+      </div>
+      <div>
+        <div class="section-header" style="text-align:left; margin-bottom:32px;">
+          <div class="overline">FAQs</div>
+          <h2 style="color:var(--text-dark);">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Can I just walk in and make glass?</div>
+            <div class="faq-a">We use an online booking system to ensure we have sufficient glass makers to serve you. You are welcome to walk-in on Saturdays and Sundays, but we are typically booked to capacity.</div>
+          </div>
+          <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Do I need prior experience?</div>
+            <div class="faq-a">Not at all! Our experiences are designed for complete beginners through experienced makers. No matter where you are in your creative journey, you'll find our experiences accessible and enjoyable.</div>
+          </div>
+          <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">How can I contact you?</div>
+            <div class="faq-a">You can stop by the studio in person, chat with us via our website, call us at 832-559-3339, or email us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="640d0a020b24030805171706080b130d0a030c0b1117100b0a4a070b09">[email&#160;protected]</a></div>
+          </div>
+          <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">What are your Terms and Conditions?</div>
+            <div class="faq-a">Everyone working in our studios must read &amp; sign our online safety waiver. We have a no refund policy but you can reschedule with no charge with 72 hours notice. Arrive 15 minutes early for your reservation.</div>
+          </div>
+          <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">Can I take my glass home the same day?</div>
+            <div class="faq-a">Glass made in the studio must cool slowly so you cannot take it home that day. The glass makers will estimate when it will be ready for pickup — it will be at least 24 hours from the time made.</div>
+          </div>
+          <div class="faq-item" onclick="this.classList.toggle('open')">
+            <div class="faq-q">What payment methods do you accept?</div>
+            <div class="faq-a">We love cash or check, but we accept all forms of credit card.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Make<br>Something <em style="font-style:italic;background:linear-gradient(135deg,var(--flame-glow),var(--flame-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Beautiful</em>?</h2>
+    <p>Whether it's your first time touching molten glass or your hundredth, there's always something new to discover at Glassblowing Houston.</p>
+    <div class="cta-buttons">
+      <a href="https://glassblowinghouston.com/book-services/" class="btn btn-flame">Book Now</a>
+      <a href="https://shop.glassblowinghouston.com/shop-glass-art/" class="btn btn-ghost">Shop Glass Art</a>
+      <a href="http://eepurl.com/dLs1Rs" class="btn btn-ghost">Join Our Community</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="gbh-logo.png" alt="Glassblowing Houston">
+        <p>The only open-access glassblowing studio in the greater Houston area. A family-operated creative center since 2004.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="https://glassblowinghouston.com/book-experiences/">Book Experiences</a></li>
+          <li><a href="https://glassblowinghouston.com/book-events/">Book Events</a></li>
+          <li><a href="https://glassblowinghouston.com/book-classes/">Book Classes</a></li>
+          <li><a href="https://glassblowinghouston.com/book-rental-time/">Rent Studio Time</a></li>
+          <li><a href="https://glassblowinghouston.com/book-custom-designs/">Custom Designs</a></li>
+          <li><a href="https://glassblowinghouston.com/glass-art-repair/">Art Glass Repair</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul class="footer-links">
+          <li><a href="https://glassblowinghouston.com/our-story/">Our Story</a></li>
+          <li><a href="https://glassblowinghouston.com/our-glass-family/">Our Glass Family</a></li>
+          <li><a href="https://glassblowinghouston.com/our-values/">Our Values</a></li>
+          <li><a href="https://glassblowinghouston.com/beyond-glass-blog2/">Blog</a></li>
+          <li><a href="https://glassblowinghouston.com/knowledgebase2/">Knowledgebase</a></li>
+          <li><a href="https://glassblowinghouston.com/safety-waiver/">Safety Waiver</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+18325593339">832-559-3339</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#6e070008012e09020f1d1d0c02011907000906011b1d1a0100400d0103"><span class="__cf_email__" data-cfemail="81e8efe7eec1e6ede0f2f2e3edeef6e8efe6e9eef4f2f5eeefafe2eeec">[email&#160;protected]</span></a></li>
+          <li><a href="https://www.google.com/maps/dir//17442+Farm+to+Market+2920,+Tomball,+TX+77377">17440–17442 FM 2920 Rd<br>Tomball, TX 77377</a></li>
+          <li style="margin-top:6px;color:var(--text-muted);font-size:0.82rem;">Open 10am–5pm, 7 days/week</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Glassblowing Houston. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/Glass3DV/" title="Facebook">f</a>
+        <a href="https://www.instagram.com/glassblowinghouston
