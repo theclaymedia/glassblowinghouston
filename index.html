@@ -1020,6 +1020,7 @@
     .faq-grid { grid-template-columns: 1fr; }
     .faq-image-wrap { max-width: 360px; margin: 0 auto; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
+    .stats-row { gap: 48px; }
   }
   @media (max-width: 768px) {
     .nav { display: none; }
@@ -1040,9 +1041,17 @@
     .about-blob-1 { width: 220px; height: 220px; }
     .about-blob-2 { width: 170px; height: 170px; }
     .about-blob-3 { width: 120px; height: 120px; }
+    .process-timeline { flex-direction: column; align-items: center; gap: 32px; }
+    .process-timeline::before { display: none; }
+    .process-step { max-width: 280px; }
+    .stats-row { gap: 32px; }
+    .review-card { width: 320px; }
   }
   @media (max-width: 480px) {
     .exp-grid { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+    .review-card { width: 280px; padding: 22px; }
+    .stats-row { gap: 24px; }
+    .stats-number { font-size: 2.2rem; }
   }
 </style>
 </head>
@@ -1213,6 +1222,39 @@
           </div>
         </div>
         <a href="https://glassblowinghouston.com/our-story/" class="btn btn-dark-solid">Read Our Full Story →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="process-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">How It Works</div>
+      <h2>From Flame to Finished Art</h2>
+      <p>Your glassblowing journey in four simple steps — no experience required.</p>
+    </div>
+    <div class="process-timeline">
+      <div class="process-step">
+        <div class="process-num">1</div>
+        <h3>Book Online</h3>
+        <p>Choose your experience and pick a date that works for you.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">2</div>
+        <h3>Show Up & Gear Up</h3>
+        <p>Arrive 15 minutes early, sign your waiver, and meet your glass maker.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">3</div>
+        <h3>Create Your Piece</h3>
+        <p>Work with molten glass hands-on, guided every step by our team.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">4</div>
+        <h3>Pick It Up</h3>
+        <p>Your piece cools overnight — come back to take home your creation.</p>
       </div>
     </div>
   </div>
