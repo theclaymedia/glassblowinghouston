@@ -749,6 +749,256 @@
   }
   .footer-social a:hover { background: var(--flame); color: var(--warm-white); }
 
+  /* ─── HOW IT WORKS ─── */
+  .process-section {
+    padding: 100px 0;
+    background: var(--night);
+    position: relative;
+    overflow: hidden;
+  }
+  .process-section::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,182,39,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .process-timeline {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .process-timeline::before {
+    content: '';
+    position: absolute;
+    top: 48px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(232,86,42,0.3), rgba(255,182,39,0.3), rgba(232,86,42,0.3), transparent);
+  }
+  .process-step {
+    flex: 1;
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.4s var(--ease-out);
+  }
+  .process-step:hover { transform: translateY(-6px); }
+  .process-num {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--charcoal);
+    border: 2px solid rgba(232,86,42,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--flame);
+    transition: all 0.4s var(--ease-out);
+    position: relative;
+    z-index: 2;
+  }
+  .process-step:hover .process-num {
+    background: linear-gradient(135deg, var(--flame), var(--ember));
+    color: var(--warm-white);
+    border-color: var(--flame);
+    box-shadow: 0 0 40px rgba(232,86,42,0.3);
+  }
+  .process-step h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .process-step p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  /* ─── STATS COUNTER ─── */
+  .stats-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--charcoal) 0%, var(--smoke) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .stats-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(232,86,42,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(255,182,39,0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .stats-item {
+    text-align: center;
+    min-width: 140px;
+  }
+  .stats-number {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 4vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--flame-glow), var(--flame-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .stats-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+
+  /* ─── REVIEWS MARQUEE ─── */
+  .reviews-section {
+    padding: 100px 0 100px;
+    background: var(--deep);
+    position: relative;
+    overflow: hidden;
+  }
+  .reviews-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,86,42,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .marquee-wrapper {
+    position: relative;
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .marquee-wrapper::before,
+  .marquee-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, var(--deep), transparent);
+  }
+  .marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, var(--deep), transparent);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+  }
+  .marquee-track-left {
+    animation: marqueeLeft 45s linear infinite;
+  }
+  .marquee-track-right {
+    animation: marqueeRight 50s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  @keyframes marqueeLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marqueeRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+  .review-card {
+    flex-shrink: 0;
+    width: 380px;
+    background: var(--night);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 28px;
+    transition: all 0.35s var(--ease-out);
+    cursor: default;
+  }
+  .review-card:hover {
+    border-color: rgba(232,86,42,0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .review-stars {
+    color: var(--flame-glow);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+  .review-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 18px;
+    font-style: italic;
+  }
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .review-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--flame), var(--flame-glow));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--warm-white);
+    flex-shrink: 0;
+  }
+  .review-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+  }
+  .review-source {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
   /* ─── ANIMATIONS ─── */
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(28px); }
